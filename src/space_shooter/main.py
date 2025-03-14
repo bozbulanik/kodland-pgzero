@@ -81,7 +81,7 @@ class HealthBar:
         screen.draw.filled_rect(Rect(x, y, self.width, self.height), colors["bg"])
         screen.draw.filled_rect(Rect(x + self.border, y + self.border, fill_width, self.height - 2 * self.border), colors["fill"])
         
-        text = f"{"Can" if self.bar_type == "health" else "Kalkan"}: {int(current_value)}/{max_value}"
+        text = f"{'Can' if self.bar_type == 'health' else 'Kalkan'}: {int(current_value)}/{max_value}"
 
         screen.draw.text(text, center=(x + self.width // 2, y + self.height // 2), fontsize=24, color="white")
 
@@ -95,7 +95,7 @@ class Bullet(Actor):
         self.y += dy * self.speed
 
 class Explosion(Actor):
-    def __init__(self, sprite_name="playership3_damage1", **kwargs):
+    def __init__(self, sprite_name="explosion00", **kwargs):
         super(Explosion, self).__init__(sprite_name, **kwargs)
         self.frame = 0
         self.animation_speed = 0.1
@@ -548,6 +548,5 @@ def on_mouse_down(pos):
 
     elif game.game_state.stage == GameStage.GAME_OVER:
         game.restart_button.on_click(pos)
-
 
 pgzrun.go()
